@@ -3,7 +3,8 @@ This is an extension of the former WPF Tams-Pizzeria Employee Portal. Based on t
 
 This web application uses the .NET Core 2.0 Framework. Utilized middleware pipeline - authentication, authorization, dependency injection, Entity Framework Core, etc.
 
-This web application is currently running live. A demo is available at <a href="https://tamspizzeria.azurewebsites.net/">Tams' Pizzeria</a>
+This web application is currently running live. A demo is available at <a href="https://tamspizzeria.azurewebsites.net/">Tams' Pizzeria</a>.
+The live demo may or may not be up to date with current progress.
 
 *This is a continuous work in progress* 
 
