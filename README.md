@@ -12,7 +12,7 @@ Thanks,
 
 Thomas Owca
 
-Application Output | Windows | Google Chrome
+***Application Output | Windows | Google Chrome***
 
 <img src="Demo Images/image1.PNG" alt="img1" width="1000" />
 
@@ -27,8 +27,11 @@ Application Output | Windows | Google Chrome
 <img src="Demo Images/image5.PNG" alt="img5" width="1000" />
 
 <img src="Demo Images/image6.PNG" alt="img6" width="1000" />
+<br />
 
-Application Output | Mobile | Android | Mozilla Firefox
+***Application Output | Mobile | Android | Mozilla Firefox***
+
+<br />
 
 <img src="Demo Images/image7.png" alt="img7" height="725" />
 
