@@ -30,12 +30,12 @@ Application Output | Windows | Google Chrome
 
 Application Output | Mobile | Android | Mozilla Firefox
 
-<img src="Demo Images/image7.png" alt="img7" />
+<img src="Demo Images/image7.png" alt="img7" height="325" />
 
-<img src="Demo Images/image8.png" alt="img8" />
+<img src="Demo Images/image8.png" alt="img8" height="325" />
 
-<img src="Demo Images/image9.png" alt="img9" />
+<img src="Demo Images/image9.png" alt="img9" height="325" />
 
-<img src="Demo Images/image10.png" alt="img10" />
+<img src="Demo Images/image10.png" alt="img10" height="325" />
 
-<img src="Demo Images/image11.png" alt="img11" />
+<img src="Demo Images/image11.png" alt="img11" height="325" />
