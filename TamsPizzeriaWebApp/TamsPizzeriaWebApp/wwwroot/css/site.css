@@ -1,0 +1,190 @@
+﻿.removeExcessBottom {
+    margin-bottom: -25px;
+}
+
+.spacing {
+    padding-bottom: 40px;
+}
+
+.carousel-bg .carousel-inner .item {
+    background-color: #FE3B41;
+    background-size: cover;
+    background-position: center;
+    min-height: 360px;
+}
+
+.slide {
+    margin-top: 30px;
+}
+
+.details {
+    margin: 50px 0;
+}
+
+.details h1 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+.details .back-link {
+    text-align: center;
+}
+
+.details .back-link a {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 15px 30px;
+    background: #333;
+    color: #fff;
+    border-radius: 24px;
+}
+
+.details .back-link a svg {
+    margin-right: 10px;
+    vertical-align: text-top;
+    display: inline-block;
+}
+
+
+div > div > .subTotal {
+    color: white;
+}
+
+.table > tbody > tr > td,
+.table > tbody > tr > th, .table > tfoot > tr > td,
+.table > tfoot > tr > th, .table > thead > tr > td,
+.table > thead > tr > th {
+    vertical-align: middle;
+}
+
+table {
+    table-layout: fixed;
+}
+
+table td {
+    width: 50%;
+}
+
+.orderButton {
+    color: white;
+    background-color: #FE3B41;
+    border: 1px solid white;
+}
+
+.orderButton:hover {
+    background-color: black;
+    color: white;
+}
+
+.serviceImg {
+    float: right;
+    width: 40%;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #ed3030;
+}
+
+div p {
+    color: black;
+}
+
+h2 {
+    color : white;
+}
+
+h1 {
+    color: white;
+    font-weight: 600;
+}
+
+h3 {
+    color: black;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+h4 {
+    color: white;
+}
+
+li {
+    color: white;
+}
+
+a {
+    color : white;
+}
+
+a:hover {
+    color: black;
+}
+
+.white {
+    color: white;
+}
+
+.whiteBlackBackground {
+    color: white;
+    background-color: black;
+    border: solid 2px white;
+    border-radius: 4px 4px;
+    padding: 3px 3px 3px 3px;
+    margin-right: 120px;
+    margin-left: 120px;
+}
+
+.paddingBottom {
+    margin-bottom: 10px;
+}
+
+.tdheader {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.ourMenuImg {
+    border: solid;
+    border-color: white;
+    border-width: 5px;
+    border-radius: 10px 10px;
+    width: 400px;
+    margin-right: 300px;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+#selectMedSize {
+    width: 40%;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}

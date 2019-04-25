@@ -1,0 +1,28 @@
+﻿@model TamsPizzeriaWebApp.Models.CreateOrderViewModels.OrderConfirmationViewModel
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<h2>Your Order Was Received!</h2>
+<h2>Confirmation #@Model.ConfirmationNumber</h2>
+<h3>Thank You!</h3>
+
+<h4>Order Summary</h4>
+<ul>
+    <li>Customer: @Model.UserFirstName @Model.UserLastName</li>
+    <li>Date Ordered: @Model.DateSubmitted</li>
+    <li>Time Submitted: @Model.TimeSubmitted</li>
+</ul>
+<ul>
+    <li>Pizza Order: @Model.PizzaSize @Model.PizzaCrust</li>
+    <li>Topping 1: @Model.Topping1</li>
+    <li>Topping 2: @Model.Topping2</li>
+    <li>Topping 3: @Model.Topping3</li>
+    <li>Quantity:  @Model.Quantity</li>
+</ul>
+<ul>
+    <li>Pick-Up Location: @Model.PickUpLocation</li>
+    <li>Sub Total:        $@Model.SubTotal.ToString("0.00")</li>
+    <li>Total:            $@Model.Total.ToString("0.00")</li>
+</ul>
+

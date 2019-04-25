@@ -1,0 +1,84 @@
+﻿@model TamsPizzeriaWebApp.Models.MenuViewModels.OurMenuViewModel
+
+<h2>Welcome To Our Menu!</h2>
+<h2 style="color: black; font-weight: 800; text-decoration: underline; padding-bottom: 20px;">Come Grab A Bite!</h2>
+<p class="white">
+    We follow a simplistic approach to creating a killer tasting pizza!
+    <br />
+    Simply follow the steps below to get an idea for customer choices.
+    Add cost from each table to get an idea for the your price!
+    <br /><br />
+    <span>Pizza Ordering Process</span>
+    <br />
+    1. Pick a size.<br />
+    2. Pick a crust.<br />
+    3. Pick toppings (up to 3).<br />
+</p>
+
+<br/>
+<img src="/images/pizza1.jpg" alt="pizza header" class="ourMenuImg"/>
+
+<br /> 
+<br />
+<br />
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="tdheader">Size</th>
+                <th class="tdheader">Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Sizes)
+            {
+                <tr>
+                    <td class="white">@item.Type</td>
+                    <td class="white">$@item.Cost</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <br />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="tdheader">Crust</th>
+                <th class="tdheader">Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Crusts)
+            {
+                <tr>
+                    <td class="white">@item.Type</td>
+                    <td class="white">$@item.Cost</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="tdheader">Topping</th>
+                <th class="tdheader">Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Toppings)
+            {
+                <tr>
+                    <td class="white">@item.Type</td>
+                    <td class="white">$@item.Cost</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
