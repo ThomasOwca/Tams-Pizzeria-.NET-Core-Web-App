@@ -1,0 +1,2 @@
+# Tams-Pizzeria-.NET-Core-Web-App
+This is an extension of the former WPF Tams-Pizzeria Employee Portal. This is not only a .NET Core Web App, it is an extension of what could have been. This web app allows customers to register/log-in and create online orders and view their history. This web app also provides an employee portal for business employees to be able to do their job, view, and manipulate the information in the database (SQL Server).
