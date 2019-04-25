@@ -28,10 +28,14 @@ Application Output | Windows | Google Chrome
 
 <img src="Demo Images/image6.PNG" alt="img6" width="1000" />
 
-Application Output | Mobile - Android | Mozilla Firefox
+Application Output | Mobile | Android | Mozilla Firefox
 
-<img src="Demo Images/image7.PNG" alt="img6" />
+<img src="Demo Images/image7.png" alt="img7" />
 
-<img src="Demo Images/image8.PNG" alt="img6" />
+<img src="Demo Images/image8.png" alt="img8" />
 
-<img src="Demo Images/image9.PNG" alt="img6" />
+<img src="Demo Images/image9.png" alt="img9" />
+
+<img src="Demo Images/image10.png" alt="img10" />
+
+<img src="Demo Images/image11.png" alt="img11" />
