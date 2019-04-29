@@ -62,8 +62,32 @@ table {
     table-layout: fixed;
 }
 
+.orderHistory {
+    border-spacing: 30px 0;
+}
+
+.orderHistory tbody tr {
+    border-top: 1px solid white;
+}
+
+.orderHistory thead td {
+    padding: 20px;
+}
+
 table td {
     width: 50%;
+    padding: 20px;
+    color: white;
+}
+
+.updateLink {
+    color: black;
+}
+
+thead tr {
+    background-color: black;
+    color: white;
+    border-radius: 10px 10px;
 }
 
 .orderButton {

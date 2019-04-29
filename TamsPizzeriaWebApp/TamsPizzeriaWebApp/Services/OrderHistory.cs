@@ -40,7 +40,8 @@ namespace TamsPizzeriaWebApp.Services
         {
             return _context.Orders
                 .Include(o => o.Status)
-                .Include(o => o.Pizza)
+                .Include(c => c.Pizza.Crust)
+                .Include(c => c.Pizza.Size)
                 .Include(o => o.StorePickup)
                 .Where(o => o.LastName == lastName);
         }
@@ -49,7 +50,8 @@ namespace TamsPizzeriaWebApp.Services
         {
             return _context.Orders
                 .Include(o => o.Status)
-                .Include(o => o.Pizza)
+                .Include(c => c.Pizza.Crust)
+                .Include(c => c.Pizza.Size)
                 .Include(o => o.StorePickup)
                 .OrderByDescending(o => o.OrderDate);
         }
@@ -58,7 +60,8 @@ namespace TamsPizzeriaWebApp.Services
         {
             return _context.Orders
                 .Include(o => o.Status)
-                .Include(o => o.Pizza)
+                .Include(c => c.Pizza.Crust)
+                .Include(c => c.Pizza.Size)
                 .Include(o => o.StorePickup)
                 .Where(o => o.FulFilledById == id);
         }
@@ -67,7 +70,8 @@ namespace TamsPizzeriaWebApp.Services
         {
             return _context.Orders
                 .Include(o => o.Status)
-                .Include(o => o.Pizza)
+                .Include(c => c.Pizza.Crust)
+                .Include(c => c.Pizza.Size)
                 .Include(o => o.StorePickup)
                 .Where(o => o.Pizza.Id == id);
         }
@@ -76,7 +80,8 @@ namespace TamsPizzeriaWebApp.Services
         {
             return _context.Orders
                .Include(o => o.Status)
-               .Include(o => o.Pizza)
+               .Include(c => c.Pizza.Crust)
+                .Include(c => c.Pizza.Size)
                .Include(o => o.StorePickup)
                .Where(o => o.Status.Id == id);
         }
@@ -85,7 +90,8 @@ namespace TamsPizzeriaWebApp.Services
         {
             return _context.Orders
                 .Include(o => o.Status)
-                .Include(o => o.Pizza)
+                .Include(c => c.Pizza.Crust)
+                .Include(c => c.Pizza.Size)
                 .Include(o => o.StorePickup)
                 .Where(o => o.StorePickup.Id == id);
         }
@@ -94,7 +100,8 @@ namespace TamsPizzeriaWebApp.Services
         {
             return _context.Orders
                 .Include(o => o.Status)
-                .Include(o => o.Pizza)
+                .Include(c => c.Pizza.Crust)
+                .Include(c => c.Pizza.Size)
                 .Include(o => o.StorePickup)
                 .FirstOrDefault(o => o.Confirmation == confirmation);
         }
@@ -103,7 +110,8 @@ namespace TamsPizzeriaWebApp.Services
         {
             return _context.Orders
                 .Include(o => o.Status)
-                .Include(o => o.Pizza)
+                .Include(c => c.Pizza.Crust)
+                .Include(c => c.Pizza.Size)
                 .Include(o => o.StorePickup)
                 .FirstOrDefault(o => o.Id == id);
         }

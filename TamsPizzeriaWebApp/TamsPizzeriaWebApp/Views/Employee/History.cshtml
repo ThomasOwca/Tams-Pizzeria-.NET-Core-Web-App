@@ -1,0 +1,72 @@
+﻿@model TamsPizzeriaWebApp.Models.EmployeeViewModels.OrderHistoryViewModel
+@{
+    ViewData["Title"] = "History";
+}
+
+<h2>Order History</h2>
+<div class="table-responsive">
+    <table class="orderHistory" style="border-spacing: 40px;">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Employee ID#</td>
+                <td>Order Date</td>
+                <td>Confirmation #</td>
+                <td>Online Order</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Status</td>
+                <td>Size</td>
+                <td>Crust</td>
+                <td>Topping 1</td>
+                <td>Topping 2</td>
+                <td>Topping 3</td>
+                <td>Quantity</td>
+                <td>Sub Total</td>
+                <td>Final Total</td>
+                <td>Store Pickup</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Orders)
+            {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FulFilledById</td>
+                <td>@item.OrderDate</td>
+                <td>@item.Confirmation</td>
+                @if (item.FulFilledById == 0)
+                {
+                    <td>Yes</td>
+                }
+                else
+                {
+                    <td>No</td>
+
+                }
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Status.Type</td>
+                <td>@item.Pizza.Size.Type</td>
+                <td>@item.Pizza.Crust.Type</td>
+                <td>@item.Pizza.Topping1</td>
+                <td>@item.Pizza.Topping2</td>
+                <td>@item.Pizza.Topping3</td>
+                <td>@item.Pizza.Quantity</td>
+                <td>$@item.Pizza.SubTotal</td>
+                <td>$@item.Total</td>
+                <td>@item.StorePickup.Id</td>
+                
+                @if (item.Status.Type == "Order Received")
+                {
+                    <td>
+                        <a asp-action="Update" asp-route-id="@item.Id" class="updateLink">Update</a>
+                    </td>
+
+                }
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

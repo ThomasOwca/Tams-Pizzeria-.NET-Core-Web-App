@@ -18,11 +18,13 @@ namespace TamsPizzeriaWebApp.Controllers
     {
         private IPizzeriaMenu _pizzeria;
         private IOrder _order;
+        private IOrderHistory _orderHistory;
   
-        public EmployeeController(IPizzeriaMenu pizzeria, IOrder order)
+        public EmployeeController(IPizzeriaMenu pizzeria, IOrder order, IOrderHistory orderHistory)
         {
             _pizzeria = pizzeria;
             _order = order;
+            _orderHistory = orderHistory;
         }
         
         public IActionResult Index()
@@ -156,6 +158,18 @@ namespace TamsPizzeriaWebApp.Controllers
         public IActionResult Detail()
         {
             return View();
+        }
+
+        public IActionResult History()
+        {
+            var orders = _orderHistory.GetAllOrdersByDefault();
+
+            var model = new OrderHistoryViewModel
+            {
+                Orders = orders
+            };
+
+            return View(model);
         }
     }
 }
