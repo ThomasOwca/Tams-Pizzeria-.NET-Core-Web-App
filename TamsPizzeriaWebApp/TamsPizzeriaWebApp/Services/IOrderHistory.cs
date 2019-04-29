@@ -23,7 +23,7 @@ namespace TamsPizzeriaWebApp.Services
         // Delete and update operations for existing orders in history.
         void DeleteOrderById(int id);
         void DeleteOrderByConfirmation(int id);
-        void UpdateOrder(Order order);
+        void UpdateOrder(int confirmationNumber, Order order);
 
         // Get various business statistics for managers/admins.
         decimal GetTotalRevenueBySubTotal();

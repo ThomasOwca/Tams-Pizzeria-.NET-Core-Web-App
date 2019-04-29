@@ -65,6 +65,7 @@ namespace TamsPizzeriaWebApp
             services.AddScoped<UserManager<ApplicationUser>>();
             services.AddScoped<IPizzeriaMenu, PizzeriaMenu>();
             services.AddScoped<IOrder, Ordering>();
+            services.AddScoped<IOrderHistory, OrderHistory>();
 
             //// Add the following line of code for creating DI for UserClaims.
             //services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, MyUserClaimsPrincipalFactory>();
@@ -97,6 +98,7 @@ namespace TamsPizzeriaWebApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
 
+                // Experimentation with routing.
                 routes.MapRoute(
                     name: "employeeService",
                     template: "{controller}/{action}/{service}",

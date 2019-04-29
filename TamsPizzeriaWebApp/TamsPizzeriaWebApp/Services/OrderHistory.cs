@@ -141,13 +141,32 @@ namespace TamsPizzeriaWebApp.Services
 
         public decimal GetTotalRevenueBySubTotal()
         {
-            //decimal total = 0;
-            throw new NotImplementedException();
+            decimal total = 0;
+
+            // Have to use algebraic formula to get the subtotal from the given final total in the Orders table.
+            // Using the S = T / (1 + r) formula, where S is subtotal, T is total, r is the tax rate.
+            var orders = _context.Orders;
+
+            foreach (Order order in orders)
+            {
+                decimal temp = order.Total / (1.0m + 0.07m);
+                total += temp;
+            }
+
+            return total;
         }
 
-        public void UpdateOrder(Order order)
+        public void UpdateOrder(int confirmationNumber, Order order)
         {
-            throw new NotImplementedException();
+            var trackedOrder = _context.Orders.FirstOrDefault(o => o.Confirmation == confirmationNumber);
+            _context.Update(order);
+
+            // Updates the order. Only the pizza, status, and total can be changed.
+            trackedOrder.Pizza = order.Pizza;
+            trackedOrder.Status = order.Status;
+            trackedOrder.Total = order.Total;
+
+            _context.SaveChanges();
         }
     }
 }
