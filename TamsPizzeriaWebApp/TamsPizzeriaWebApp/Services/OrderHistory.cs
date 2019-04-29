@@ -101,31 +101,47 @@ namespace TamsPizzeriaWebApp.Services
 
         public Order GetOrderById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Orders
+                .Include(o => o.Status)
+                .Include(o => o.Pizza)
+                .Include(o => o.StorePickup)
+                .FirstOrDefault(o => o.Id == id);
         }
 
-        public int GetTopCrust()
+        public Crust GetTopCrust()
         {
-            throw new NotImplementedException();
+            return _context.Crusts.Max();
         }
 
         public int GetTotalOrdersCreatedAtCompany()
         {
-            throw new NotImplementedException();
+            return _context.Orders.Count();
         }
 
         public int GetTotalOrdersCreatedAtStore(int id)
         {
-            throw new NotImplementedException();
+            return _context.Orders
+                .Where(s => s.StorePickup.Id == id).Count();
         }
 
         public decimal GetTotalRevenueByFinalTotal()
         {
-            throw new NotImplementedException();
+            decimal total = 0;
+            var orders = _context.Orders;
+
+            // Iterate through the collection add and up the total 
+            // to calculate total revenue made by "final" total;
+            foreach (Order order in orders)
+            {
+                total += order.Total;
+            }
+
+            return total;
         }
 
         public decimal GetTotalRevenueBySubTotal()
         {
+            //decimal total = 0;
             throw new NotImplementedException();
         }
 

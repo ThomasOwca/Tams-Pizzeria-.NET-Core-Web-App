@@ -31,6 +31,6 @@ namespace TamsPizzeriaWebApp.Services
 
         int GetTotalOrdersCreatedAtCompany();
         int GetTotalOrdersCreatedAtStore(int id);
-        int GetTopCrust();
+        Crust GetTopCrust();
     }
 }
