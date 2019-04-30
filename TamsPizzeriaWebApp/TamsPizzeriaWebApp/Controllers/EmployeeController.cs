@@ -179,5 +179,11 @@ namespace TamsPizzeriaWebApp.Controllers
 
             return View(model);
         }
+
+        public IActionResult Details(int confirmation)
+        {
+
+            return View(model);
+        }
     }
 }
