@@ -33,7 +33,14 @@
             {
             <tr>
                 <td>@item.Id</td>
-                <td>@item.FulFilledById</td>
+                @if (item.FulFilledById == 0)
+                {
+                    <td>Customer (Online)</td>
+                }
+                else
+                {
+                    <td>@item.FulFilledById</td>
+                }
                 <td>@item.OrderDate</td>
                 <td>@item.Confirmation</td>
                 @if (item.FulFilledById == 0)
@@ -61,7 +68,7 @@
                 @if (item.Status.Type == "Order Received")
                 {
                     <td>
-                        <a asp-action="Update" asp-route-id="@item.Id" class="updateLink">Update</a>
+                        <a asp-action="Update" asp-route-id="@item.Confirmation" class="updateLink">Update</a>
                     </td>
 
                 }

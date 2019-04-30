@@ -128,6 +128,13 @@ namespace TamsPizzeriaWebApp.Controllers
 
             var orderTime = _order.GetOrderByConfirmation(submission.ConfirmationNumber).OrderDate;
 
+            try
+            {
+                // Convert the UTC time to local.
+                orderTime.ToLocalTime();
+            }
+            catch (Exception ex) { }
+
             var model = new EmployeeOrderSubmissionViewModel
             {
                 ConfirmationNumber = submission.ConfirmationNumber,
@@ -163,6 +170,7 @@ namespace TamsPizzeriaWebApp.Controllers
         public IActionResult History()
         {
             var orders = _orderHistory.GetAllOrdersByDefault();
+           
 
             var model = new OrderHistoryViewModel
             {

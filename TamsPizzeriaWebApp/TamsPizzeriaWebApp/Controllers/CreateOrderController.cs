@@ -222,8 +222,14 @@ namespace TamsPizzeriaWebApp.Controllers
 
             var orderDateTime = _order.GetOrderByConfirmation(id).OrderDate;
 
-            model.DateSubmitted = orderDateTime.ToString("MM/dd/yyyy");
-            model.TimeSubmitted = orderDateTime.ToString("hh:mm tt");
+            try
+            {
+                // Convert the UTC time to local.
+                orderDateTime.ToLocalTime();
+                model.DateSubmitted = orderDateTime.ToString("MM/dd/yyyy");
+                model.TimeSubmitted = orderDateTime.ToString("hh:mm tt");
+            }
+            catch (Exception ex) { }
 
             return View(model);
         }
