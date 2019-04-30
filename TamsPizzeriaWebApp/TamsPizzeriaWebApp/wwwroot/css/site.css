@@ -58,6 +58,11 @@ div > div > .subTotal {
     vertical-align: middle;
 }
 
+table.table {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 table {
     table-layout: fixed;
 }
@@ -70,9 +75,13 @@ table {
     border-top: 1px solid white;
 }
 
-.orderHistory thead td {
-    padding: 20px;
+.orderHistory thead td, .orderHistory tbody td {
+    padding-left: 15px;
+    padding-right: 20px;
+    white-space: nowrap;
+    text-align: center;
 }
+
 
 table td {
     width: 50%;
