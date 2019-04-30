@@ -81,7 +81,7 @@ namespace TamsPizzeriaWebApp.Services
             return _context.Orders
                .Include(o => o.Status)
                .Include(c => c.Pizza.Crust)
-                .Include(c => c.Pizza.Size)
+               .Include(c => c.Pizza.Size)
                .Include(o => o.StorePickup)
                .Where(o => o.Status.Id == id);
         }

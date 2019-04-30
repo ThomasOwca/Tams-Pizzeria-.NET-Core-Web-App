@@ -8,6 +8,7 @@
     <table class="orderHistory" style="border-spacing: 40px;">
         <thead>
             <tr>
+                <td>Details</td>
                 <td>ID</td>
                 <td>Employee ID#</td>
                 <td>Order Date</td>
@@ -25,13 +26,15 @@
                 <td>Sub Total</td>
                 <td>Final Total</td>
                 <td>Store Pickup</td>
-                <td>Details</td>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.Orders)
             {
             <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Confirmation" class="updateLink">View Details</a>
+                </td>
                 <td>@item.Id</td>
                 @if (item.FulFilledById == 0)
                 {
@@ -64,14 +67,6 @@
                 <td>$@item.Pizza.SubTotal</td>
                 <td>$@item.Total</td>
                 <td>@item.StorePickup.Id</td>
-                
-                @if (item.Status.Type == "Order Received")
-                {
-                    <td>
-                        <a asp-action="Details" asp-route-id="@item.Confirmation" class="updateLink">View Details</a>
-                    </td>
-
-                }
             </tr>
             }
         </tbody>

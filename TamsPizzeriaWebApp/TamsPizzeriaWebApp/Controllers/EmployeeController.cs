@@ -180,8 +180,34 @@ namespace TamsPizzeriaWebApp.Controllers
             return View(model);
         }
 
-        public IActionResult Details(int confirmation)
+        public IActionResult Details(int id)
         {
+            var order = _orderHistory.GetOrderByConfirmation(id);
+
+            var model = new OrderHistoryDetailsViewModel
+            {
+                ID = order.Id,
+                Confirmation = order.Confirmation,
+                FinalTotal = order.Total,
+                SubTotal = order.Pizza.SubTotal,
+                FirstName = order.FirstName,
+                LastName = order.LastName,
+                FulFilledByID = order.FulFilledById,
+                OnlineOrder = order.OnlineOrder,
+                OrderDate = order.OrderDate,
+                Quantity = order.Pizza.Quantity,
+                Size = order.Pizza.Size.Type,
+                Crust = order.Pizza.Crust.Type,
+                Topping1 = order.Pizza.Topping1,
+                Topping2 = order.Pizza.Topping2,
+                Topping3 = order.Pizza.Topping3,
+                Status = order.Status.Type,
+                StoreID = order.StorePickup.Id,
+                StoreStreetAddress = order.StorePickup.StreetAddress,
+                StoreCity = order.StorePickup.City,
+                StoreState = order.StorePickup.State,
+                StoreZipCode = Convert.ToInt32(order.StorePickup.ZipCode)
+            };
 
             return View(model);
         }

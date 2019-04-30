@@ -23,7 +23,7 @@ namespace TamsPizzeriaWebApp.Models.EmployeeViewModels
         public int Quantity { get; set; }
         public decimal SubTotal { get; set; }
         public decimal FinalTotal { get; set; }
-        public string StoreID { get; set; }
+        public int StoreID { get; set; }
         public string StoreStreetAddress { get; set; }
         public string StoreCity { get; set; }
         public string StoreState { get; set; }

@@ -1,0 +1,70 @@
+﻿@model TamsPizzeriaWebApp.Models.EmployeeViewModels.OrderHistoryDetailsViewModel
+
+<h2>Order Confirmation #@Model.Confirmation</h2>
+
+<div class="col-md-12">
+    <div class="col-md-6">
+        <table class="table table-responsive">
+            <tr>
+                <td>Name:</td>
+                <td>@Model.FirstName @Model.LastName</td>
+            </tr>
+            <tr>
+                <td>Store ID:</td>
+                <td>@Model.StoreID</td>
+            </tr>
+            <tr>
+                <td>Store Address:</td>
+                <td>@Model.StoreStreetAddress</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Model.StoreCity, @Model.StoreState @Model.StoreZipCode</td>
+            </tr>
+            @if (Model.FulFilledByID == 0)
+            {
+                <tr>
+                    <td>Online Order</td>
+                    <td>Yes</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>In-Store Order</td>
+                    <td>Fulfilled by Employee ID: @Model.FulFilledByID</td>
+                </tr>
+
+            }
+            <tr>
+                <td>Pizza Base:</td>
+                <td>@Model.Crust - @Model.Size</td>
+            </tr>
+            <tr>
+                <td>Topping 1:</td>
+                <td>@Model.Topping1</td>
+            </tr>
+            <tr>
+                <td>Topping 2:</td>
+                <td>@Model.Topping2</td>
+            </tr>
+            <tr>
+                <td>Topping 3:</td>
+                <td>@Model.Topping3</td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td>@Model.Quantity</td>
+            </tr>
+            <tr>
+                <td>SubTotal:</td>
+                <td>$@Model.SubTotal</td>
+            </tr>
+            <tr>
+                <td>Final Total: </td>
+                <td>$@Model.FinalTotal</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
