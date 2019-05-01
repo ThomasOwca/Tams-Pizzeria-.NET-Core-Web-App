@@ -160,6 +160,10 @@ a:hover {
     color: white;
 }
 
+h4.bold {
+    font-weight: 800;
+}
+
 .whiteBlackBackground {
     color: white;
     background-color: black;
