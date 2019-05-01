@@ -43,40 +43,42 @@
     </div>
     <div class="col-md-6">
         <h4 class="bold">Modify Order</h4>
-        <table class="table table-responsive">
-            <tr>
-                <td>Pizza Size</td>
-                <td><select asp-for="@Model.PizzaSize" asp-items="@Model.Sizes" class="form form-control"></select></td>
-            </tr>
-            <tr>
-                <td>Pizza Crust</td>
-                <td><select asp-for="@Model.PizzaCrust" asp-items="@Model.Crusts" class="form form-control"></select></td>
-            </tr>
-            <tr>
-                <td>Topping 1:</td>
-                <td><select asp-for="@Model.PizzaTopping1" asp-items="@Model.Topping1" class="form form-control"></select></td>
-            </tr>
-            <tr>
-                <td>Topping 2:</td>
-                <td><select asp-for="@Model.PizzaTopping2" asp-items="@Model.Topping2" class="form form-control"></select></td>
-            </tr>
-            <tr>
-                <td>Topping 3:</td>
-                <td><select asp-for="@Model.PizzaTopping3" asp-items="@Model.Topping3" class="form form-control"></select></td>
-            </tr>
-            <tr>
-                <td>Quantity:</td>
-                <td><select asp-for="@Model.PizzaQuantity" asp-items="@Model.Quantities" class="form form-control"></select></td>
-            </tr>
-            <tr>
-                <td>
-                    <a class="btn orderButton" asp-action="Details" asp-route-id="@Model.ConfirmationNumber">Details View</a>
-                </td>
-                <td>
-                    <a class="btn orderButton" value="" asp-action="UpdateOrder">Submit Changes</a>
-                </td>
-            </tr>
-        </table>
+        <form method="post" asp-action="UpdateOrder" asp-route-id="@Model.ConfirmationNumber">
+            <table class="table table-responsive">
+                <tr>
+                    <td>Pizza Size</td>
+                    <td><select asp-for="@Model.PizzaSize" asp-items="@Model.Sizes" class="form form-control"></select></td>
+                </tr>
+                <tr>
+                    <td>Pizza Crust</td>
+                    <td><select asp-for="@Model.PizzaCrust" asp-items="@Model.Crusts" class="form form-control"></select></td>
+                </tr>
+                <tr>
+                    <td>Topping 1:</td>
+                    <td><select asp-for="@Model.PizzaTopping1" asp-items="@Model.Topping1" class="form form-control"></select></td>
+                </tr>
+                <tr>
+                    <td>Topping 2:</td>
+                    <td><select asp-for="@Model.PizzaTopping2" asp-items="@Model.Topping2" class="form form-control"></select></td>
+                </tr>
+                <tr>
+                    <td>Topping 3:</td>
+                    <td><select asp-for="@Model.PizzaTopping3" asp-items="@Model.Topping3" class="form form-control"></select></td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td><select asp-for="@Model.PizzaQuantity" asp-items="@Model.Quantities" class="form form-control"></select></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a class="btn orderButton" asp-action="Details" asp-route-id="@Model.ConfirmationNumber">Details View</a>
+                    </td>
+                    <td>
+                        <input type="submit" class="btn orderButton" value="Submit Changes">
+                    </td>
+                </tr>
+            </table>
+        </form>
         <br />
     </div>
 </div>
