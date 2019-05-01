@@ -64,7 +64,16 @@
                 <td>Final Total: </td>
                 <td>$@Model.FinalTotal</td>
             </tr>
+            <tr>
+                <td>
+                    <a class="btn orderButton" asp-action="Update" asp-route-id="@Model.Confirmation">Update</a>
+                </td>
+                <td>
+                    <a class="btn orderButton" asp-action="History" asp-controller="Employee">Go Back</a>
+                </td>
+            </tr>
         </table>
+        <br />
     </div>
 </div>
 

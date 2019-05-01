@@ -211,5 +211,60 @@ namespace TamsPizzeriaWebApp.Controllers
 
             return View(model);
         }
+
+
+        public IActionResult Update(int id)
+        {
+            var order = _orderHistory.GetOrderByConfirmation(id);
+
+            var crusts = _pizzeria.GetCrusts().Select(crust => new SelectListItem
+            {
+                Text = crust.Type
+            });
+
+            var sizes = _pizzeria.GetSizes().Select(size => new SelectListItem
+            {
+                Text = size.Type
+            });
+
+            var toppings = _pizzeria.GetToppings().Select(topping => new SelectListItem
+            {
+                Text = topping.Type
+            });
+
+            List<int> numbers = new List<int>();
+
+            for (int i = 1; i < 11; i++)
+            {
+                numbers.Add(i);
+            }
+
+            var quantities = numbers.Select(number => new SelectListItem
+            {
+                Text = number.ToString()
+            });
+
+            var model = new EmployeeCreateOrderViewModel
+            {
+                ConfirmationNumber = order.Confirmation,
+                CustomerFirstName = order.FirstName,
+                CustomerLastName = order.LastName,
+                PizzaCrust = order.Pizza.Crust.Type,
+                PizzaSize = order.Pizza.Size.Type,
+                PizzaTopping1 = order.Pizza.Topping1,
+                PizzaTopping2 = order.Pizza.Topping2,
+                PizzaTopping3 = order.Pizza.Topping3,
+                Crusts = crusts,
+                Sizes = sizes,
+                Topping1 = toppings,
+                Topping2 = toppings,
+                Topping3 = toppings,
+                Quantities = quantities
+                
+            };
+
+            return View(model);
+        }
+
     }
 }
