@@ -259,8 +259,10 @@ namespace TamsPizzeriaWebApp.Controllers
                 Topping1 = toppings,
                 Topping2 = toppings,
                 Topping3 = toppings,
-                Quantities = quantities
-                
+                Quantities = quantities,
+                PizzaQuantity = order.Pizza.Quantity,
+                SubTotal = order.Pizza.SubTotal,
+                Total = order.Total
             };
 
             return View(model);
