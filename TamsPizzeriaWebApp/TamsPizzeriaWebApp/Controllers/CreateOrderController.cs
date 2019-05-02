@@ -190,16 +190,8 @@ namespace TamsPizzeriaWebApp.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            // Retrieve an ID for this pizza/selection. 
+            _order.AddPizza(submittedOrder);
             var pizza = _order.GetPizza(submittedOrder);
-
-            // If retrieval results in a null value, add this pizza selection to the database.
-            // Finally, assign the Pizza object with the returned pizza from the database.
-            if (pizza == null)
-            {
-                _order.AddPizza(submittedOrder);
-                pizza = _order.GetPizza(submittedOrder);
-            }
 
             var model = new OrderConfirmationViewModel
             {
