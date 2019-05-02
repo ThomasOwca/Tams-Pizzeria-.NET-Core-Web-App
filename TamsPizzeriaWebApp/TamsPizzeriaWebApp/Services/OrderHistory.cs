@@ -173,6 +173,8 @@ namespace TamsPizzeriaWebApp.Services
             trackedOrder.Pizza = order.Pizza;
             trackedOrder.Status = order.Status;
             trackedOrder.Total = CalculateFinalTotal(trackedOrder);
+
+            _context.SaveChanges();
         }
 
         public void UpdatePizza(Pizza pizza, Status status, int id, int confirmation)
@@ -180,26 +182,16 @@ namespace TamsPizzeriaWebApp.Services
             var trackedPizza = _context.Pizzas
                 .FirstOrDefault(p => p.Id == id);
 
-            var newPizza = new Pizza
-            {
-                Size = trackedPizza.Size,
-                Crust = trackedPizza.Crust,
-                Topping1 = trackedPizza.Topping1,
-                Topping2 = trackedPizza.Topping2,
-                Topping3 = trackedPizza.Topping3,
-                Quantity = trackedPizza.Quantity,
-                SubTotal = CalculateSubTotal(pizza)
-            };
+            trackedPizza.SubTotal = CalculateSubTotal(trackedPizza);
 
-            _context.Add(newPizza);
+            _context.Update(trackedPizza);
+            _context.SaveChanges();
 
             var order = GetOrderByConfirmation(confirmation);
             order.Status = status;
-            order.Pizza = newPizza;
+            order.Pizza = trackedPizza;
 
             UpdateOrder(confirmation, order);
-
-            _context.SaveChanges(); 
         }
 
         public Store GetStorePickup(int storeId)
@@ -269,7 +261,7 @@ namespace TamsPizzeriaWebApp.Services
         {
             decimal toppingsTotal = GetToppingCost(pizza.Topping1) + GetToppingCost(pizza.Topping2) + GetToppingCost(pizza.Topping3);
 
-            return pizza.Size.Cost + pizza.Crust.Cost + toppingsTotal;
+            return (pizza.Size.Cost + pizza.Crust.Cost + toppingsTotal) * pizza.Quantity;
         }
 
         private decimal CalculateFinalTotal(Order order)

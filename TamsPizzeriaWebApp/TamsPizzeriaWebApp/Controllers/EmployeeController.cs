@@ -116,13 +116,8 @@ namespace TamsPizzeriaWebApp.Controllers
                 return RedirectToAction("Service");
             }
 
+            _order.AddPizza(submission);
             var pizza = _order.GetPizza(submission);
-
-            if (pizza == null)
-            {
-                _order.AddPizza(submission);
-                pizza = _order.GetPizza(submission);
-            }
             
             _order.SubmitInStoreOrder(submission, pizza, "Order Received", 1);
 
