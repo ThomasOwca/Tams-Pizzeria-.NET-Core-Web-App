@@ -1,12 +1,16 @@
-﻿@model TamsPizzeriaWebApp.Models.EmployeeViewModels.EmployeeCreateOrderViewModel
+﻿@model TamsPizzeriaWebApp.Models.EmployeeViewModels.OrderHistoryUpdateViewModel
 
 <h2>Order Confirmation #@Model.ConfirmationNumber</h2>
 <h2>Customer: @Model.CustomerFirstName @Model.CustomerLastName</h2>
 
 <div class="col-md-12">
     <div class="col-md-6">
-        <h4 class="bold">Original Order</h4>
+        <h4 class="bold">Current Order</h4>
         <table class="table table-responsive">
+            <tr>
+                <td>Order Status</td>
+                <td>@Model.Status</td>
+            </tr>
             <tr>
                 <td>Pizza Size:</td>
                 <td>@Model.PizzaSize</td>
@@ -42,9 +46,13 @@
         </table>
     </div>
     <div class="col-md-6">
-        <h4 class="bold">Modify Order</h4>
+        <h4 class="bold">Update Order</h4>
         <form method="post" asp-action="UpdateOrder" asp-route-id="@Model.ConfirmationNumber">
             <table class="table table-responsive">
+                <tr>
+                    <td>Order Status</td>
+                    <td><select asp-for="@Model.Status" asp-items="@Model.Statuses" class="form form-control"></select></td>
+                </tr>
                 <tr>
                     <td>Pizza Size</td>
                     <td><select asp-for="@Model.PizzaSize" asp-items="@Model.Sizes" class="form form-control"></select></td>
@@ -74,7 +82,7 @@
                         <a class="btn orderButton" asp-action="Details" asp-route-id="@Model.ConfirmationNumber">Details View</a>
                     </td>
                     <td>
-                        <input type="submit" class="btn orderButton" value="Submit Changes">
+                        <input type="submit" class="btn orderButton" value="Submit Changes" onclick="return confirm('Warning: Order will be updated! Confirm changes?')">
                     </td>
                 </tr>
             </table>

@@ -11,5 +11,6 @@ namespace TamsPizzeriaWebApp.Services
         IEnumerable<Crust> GetCrusts();
         IEnumerable<Size> GetSizes();
         IEnumerable<Topping> GetToppings();
+        IEnumerable<Status> GetStatuses();
     }
 }

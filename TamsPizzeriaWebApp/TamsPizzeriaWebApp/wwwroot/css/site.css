@@ -110,6 +110,10 @@ thead tr {
     color: white;
 }
 
+.orderButton:focus {
+    color: white;
+}
+
 .serviceImg {
     float: right;
     width: 40%;

@@ -24,6 +24,7 @@ namespace TamsPizzeriaWebApp.Services
         void DeleteOrderById(int id);
         void DeleteOrderByConfirmation(int id);
         void UpdateOrder(int confirmationNumber, Order order);
+        void UpdatePizza(Pizza pizza, Status status, int id, int confirmation);
 
         // Get various business statistics for managers/admins.
         decimal GetTotalRevenueBySubTotal();
@@ -32,5 +33,16 @@ namespace TamsPizzeriaWebApp.Services
         int GetTotalOrdersCreatedAtCompany();
         int GetTotalOrdersCreatedAtStore(int id);
         Crust GetTopCrust();
+
+        Store GetStorePickup(int storeId);
+        Status GetStatus(string type);
+        decimal GetSizeCost(string type);
+        decimal GetCrustCost(string type);
+        decimal GetToppingCost(string type);
+        Crust GetCrust(string type);
+        Size GetSize(string type);
+        Topping GetTopping(string type);
+        Pizza GetPizza(Order order);
+        Pizza GetPizza(int pizzaID);
     }
 }

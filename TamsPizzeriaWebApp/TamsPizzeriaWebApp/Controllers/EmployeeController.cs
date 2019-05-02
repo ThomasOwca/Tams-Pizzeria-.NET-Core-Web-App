@@ -244,7 +244,12 @@ namespace TamsPizzeriaWebApp.Controllers
                 Text = number.ToString()
             });
 
-            var model = new EmployeeCreateOrderViewModel
+            var statuses = _pizzeria.GetStatuses().Select(status => new SelectListItem
+            {
+                Text = status.Type.ToString()
+            });
+
+            var model = new OrderHistoryUpdateViewModel
             {
                 ConfirmationNumber = order.Confirmation,
                 CustomerFirstName = order.FirstName,
@@ -261,11 +266,34 @@ namespace TamsPizzeriaWebApp.Controllers
                 Topping3 = toppings,
                 Quantities = quantities,
                 PizzaQuantity = order.Pizza.Quantity,
+                Statuses = statuses,
                 SubTotal = order.Pizza.SubTotal,
-                Total = order.Total
+                Total = order.Total,
+                Status = order.Status.Type
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateOrder(OrderHistoryUpdateViewModel model, int id)
+        {
+            var order = _orderHistory.GetOrderByConfirmation(id);
+            var pizza = _orderHistory.GetPizza(order);
+
+            pizza.Size = _orderHistory.GetSize(model.PizzaSize);
+            pizza.Crust = _orderHistory.GetCrust(model.PizzaCrust);
+            pizza.Topping1 = model.PizzaTopping1;
+            pizza.Topping2 = model.PizzaTopping2;
+            pizza.Topping3 = model.PizzaTopping3;
+            pizza.Quantity = model.PizzaQuantity;
+
+            order.Pizza = pizza;
+            order.Status = _orderHistory.GetStatus(model.Status);
+
+            _orderHistory.UpdatePizza(pizza, order.Status, pizza.Id, id);
+
+            return RedirectToAction("Details", new { id });
         }
 
     }

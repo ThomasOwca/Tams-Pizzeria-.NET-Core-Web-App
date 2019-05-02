@@ -26,6 +26,11 @@ namespace TamsPizzeriaWebApp.Services
             return _context.Sizes;
         }
 
+        public IEnumerable<Status> GetStatuses()
+        {
+            return _context.Statuses;
+        }
+
         public IEnumerable<Topping> GetToppings()
         {
             return _context.Toppings;
