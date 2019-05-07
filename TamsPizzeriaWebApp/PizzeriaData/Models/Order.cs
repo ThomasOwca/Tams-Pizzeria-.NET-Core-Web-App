@@ -32,5 +32,7 @@ namespace PizzeriaData.Models
         public bool OnlineOrder { get; set; }
 
         public decimal Total { get; set; }
+
+        public bool IsCancelled { get; set; } 
     }
 }

@@ -157,6 +157,8 @@ namespace TamsPizzeriaWebApp.Migrations
 
                     b.Property<int>("FulFilledById");
 
+                    b.Property<bool>("IsCancelled");
+
                     b.Property<string>("LastName");
 
                     b.Property<bool>("OnlineOrder");

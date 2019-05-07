@@ -208,7 +208,7 @@ namespace TamsPizzeriaWebApp.Controllers
         }
 
 
-        public IActionResult Update(int id)
+        public IActionResult Update([FromServices] ApplicationDbContext _context, int id)
         {
             var order = _orderHistory.GetOrderByConfirmation(id);
 
@@ -267,29 +267,45 @@ namespace TamsPizzeriaWebApp.Controllers
                 Status = order.Status.Type
             };
 
+            ViewBag.IsAdmin = _context.Users.FirstOrDefault(u => u.UserName == User.Identity.Name).Admin;
+            ViewBag.IsManager = _context.Users.FirstOrDefault(u => u.UserName == User.Identity.Name).Manager;
+
             return View(model);
         }
 
         [HttpPost]
-        public IActionResult UpdateOrder(OrderHistoryUpdateViewModel model, int id)
+        public IActionResult UpdateOrder(OrderHistoryUpdateViewModel model, int id, string update, string delete, string cancel)
         {
+            
             var order = _orderHistory.GetOrderByConfirmation(id);
             var pizza = _orderHistory.GetPizza(order);
 
-            pizza.Size = _orderHistory.GetSize(model.PizzaSize);
-            pizza.Crust = _orderHistory.GetCrust(model.PizzaCrust);
-            pizza.Topping1 = model.PizzaTopping1;
-            pizza.Topping2 = model.PizzaTopping2;
-            pizza.Topping3 = model.PizzaTopping3;
-            pizza.Quantity = model.PizzaQuantity;
+            if (!String.IsNullOrEmpty(update))
+            {
+                pizza.Size = _orderHistory.GetSize(model.PizzaSize);
+                pizza.Crust = _orderHistory.GetCrust(model.PizzaCrust);
+                pizza.Topping1 = model.PizzaTopping1;
+                pizza.Topping2 = model.PizzaTopping2;
+                pizza.Topping3 = model.PizzaTopping3;
+                pizza.Quantity = model.PizzaQuantity;
 
-            order.Pizza = pizza;
-            order.Status = _orderHistory.GetStatus(model.Status);
+                order.Pizza = pizza;
+                order.Status = _orderHistory.GetStatus(model.Status);
 
-            _orderHistory.UpdatePizza(pizza, order.Status, pizza.Id, id);
+                _orderHistory.UpdatePizza(pizza, order.Status, pizza.Id, id);
+            }
+            else if (!String.IsNullOrEmpty(delete))
+            {
+                try
+                {
+                    _orderHistory.DeleteOrderByConfirmation(id);
+                }
+                catch (Exception ex) { }
 
+                return RedirectToAction("History");
+                
+            }
             return RedirectToAction("Details", new { id });
         }
-
     }
 }

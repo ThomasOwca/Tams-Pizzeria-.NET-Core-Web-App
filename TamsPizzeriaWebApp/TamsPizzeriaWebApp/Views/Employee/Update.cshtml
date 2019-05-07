@@ -4,50 +4,65 @@
 <h2>Customer: @Model.CustomerFirstName @Model.CustomerLastName</h2>
 
 <div class="col-md-12">
-    <div class="col-md-6">
-        <h4 class="bold">Current Order</h4>
-        <table class="table table-responsive">
-            <tr>
-                <td>Order Status</td>
-                <td>@Model.Status</td>
-            </tr>
-            <tr>
-                <td>Pizza Size:</td>
-                <td>@Model.PizzaSize</td>
-            </tr>
-            <tr>
-                <td>Pizza Crust:</td>
-                <td>@Model.PizzaCrust</td>
-            </tr>
-            <tr>
-                <td>Pizza Topping 1:</td>
-                <td>@Model.PizzaTopping1</td>
-            </tr>
-            <tr>
-                <td>Pizza Topping 2:</td>
-                <td>@Model.PizzaTopping2</td>
-            </tr>
-            <tr>
-                <td>Pizza Topping 3:</td>
-                <td>@Model.PizzaTopping3</td>
-            </tr>
-            <tr>
-                <td>Pizza Quantity:</td>
-                <td>@Model.PizzaQuantity</td>
-            </tr>
-            <tr>
-                <td>Sub Total:</td>
-                <td>$@Model.SubTotal</td>
-            </tr>
-            <tr>
-                <td>Final:</td>
-                <td>$@Model.Total</td>
-            </tr>
-        </table>
-    </div>
-    <div class="col-md-6">
-        <h4 class="bold">Update Order</h4>
-        <form method="post" asp-action="UpdateOrder" asp-route-id="@Model.ConfirmationNumber">
+    <form method="post" asp-action="UpdateOrder" asp-route-id="@Model.ConfirmationNumber">
+        <div class="col-md-6">
+            <h4 class="bold">Current Order</h4>
+            <table class="table table-responsive">
+                <tr>
+                    <td>Order Status</td>
+                    <td>@Model.Status</td>
+                </tr>
+                <tr>
+                    <td>Pizza Size:</td>
+                    <td>@Model.PizzaSize</td>
+                </tr>
+                <tr>
+                    <td>Pizza Crust:</td>
+                    <td>@Model.PizzaCrust</td>
+                </tr>
+                <tr>
+                    <td>Pizza Topping 1:</td>
+                    <td>@Model.PizzaTopping1</td>
+                </tr>
+                <tr>
+                    <td>Pizza Topping 2:</td>
+                    <td>@Model.PizzaTopping2</td>
+                </tr>
+                <tr>
+                    <td>Pizza Topping 3:</td>
+                    <td>@Model.PizzaTopping3</td>
+                </tr>
+                <tr>
+                    <td>Pizza Quantity:</td>
+                    <td>@Model.PizzaQuantity</td>
+                </tr>
+                <tr>
+                    <td>Sub Total:</td>
+                    <td>$@Model.SubTotal</td>
+                </tr>
+                <tr>
+                    <td>Final:</td>
+                    <td>$@Model.Total</td>
+                </tr>
+                <tr>
+                    @if (ViewBag.IsManager == "Yes")
+                    {
+                        <td>
+                            <a class="btn orderButton" asp-action="CancelOrder" asp-route-id="@Model.ConfirmationNumber" onclick="return confirm('Warning: This action will cancel the customer\'s order! Confirm?')">Cancel Order</a>
+                        </td>
+                    }
+                    @if (ViewBag.IsAdmin == "Yes")
+                    {
+                        <td>
+                            <input type="submit" class="btn orderButton" value="Delete Record" name="delete" onclick="return confirm('Warning: The record of this order will be completely destroyed in the database. Confirm?')" />
+                        </td>
+
+                    }
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h4 class="bold">Update Order</h4>
             <table class="table table-responsive">
                 <tr>
                     <td>Order Status</td>
@@ -82,12 +97,12 @@
                         <a class="btn orderButton" asp-action="Details" asp-route-id="@Model.ConfirmationNumber">Details View</a>
                     </td>
                     <td>
-                        <input type="submit" class="btn orderButton" value="Submit Changes" onclick="return confirm('Warning: Order will be updated! Confirm changes?')">
+                        <input type="submit" class="btn orderButton" value="Submit" name="update" onclick="return confirm('Warning: Order will be updated! Confirm changes?')">
                     </td>
                 </tr>
             </table>
-        </form>
-        <br />
-    </div>
+            <br />
+        </div>
+    </form>
 </div>
 

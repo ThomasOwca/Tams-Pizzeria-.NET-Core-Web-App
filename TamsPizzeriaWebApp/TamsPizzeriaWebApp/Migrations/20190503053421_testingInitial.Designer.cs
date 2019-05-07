@@ -10,8 +10,8 @@ using TamsPizzeriaWebApp.Data;
 namespace TamsPizzeriaWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190413051715_newMigration41201")]
-    partial class newMigration41201
+    [Migration("20190503053421_testingInitial")]
+    partial class testingInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

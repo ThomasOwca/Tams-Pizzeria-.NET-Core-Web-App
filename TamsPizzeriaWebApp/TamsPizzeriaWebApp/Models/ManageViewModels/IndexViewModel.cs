@@ -23,5 +23,7 @@ namespace TamsPizzeriaWebApp.Models.ManageViewModels
         public string StatusMessage { get; set; }
 
         public string Employee { get; set; }
+        public string Admin { get; set; }
+        public string Manager { get; set; }
     }
 }

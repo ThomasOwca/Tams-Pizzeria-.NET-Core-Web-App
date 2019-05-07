@@ -10,8 +10,8 @@ using TamsPizzeriaWebApp.Data;
 namespace TamsPizzeriaWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190413051529_newMigration412")]
-    partial class newMigration412
+    [Migration("20190507185349_isCancelledAddedToOrders")]
+    partial class isCancelledAddedToOrders
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -144,6 +144,46 @@ namespace TamsPizzeriaWebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Crusts");
+                });
+
+            modelBuilder.Entity("PizzeriaData.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Confirmation");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired();
+
+                    b.Property<int>("FulFilledById");
+
+                    b.Property<bool>("IsCancelled");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<bool>("OnlineOrder");
+
+                    b.Property<DateTime>("OrderDate");
+
+                    b.Property<int>("PizzaId");
+
+                    b.Property<int>("StatusId");
+
+                    b.Property<int>("StorePickupId");
+
+                    b.Property<decimal>("Total");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PizzaId");
+
+                    b.HasIndex("StatusId");
+
+                    b.HasIndex("StorePickupId");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("PizzeriaData.Models.Pizza", b =>
@@ -349,6 +389,24 @@ namespace TamsPizzeriaWebApp.Migrations
                     b.HasOne("TamsPizzeriaWebApp.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PizzeriaData.Models.Order", b =>
+                {
+                    b.HasOne("PizzeriaData.Models.Pizza", "Pizza")
+                        .WithMany()
+                        .HasForeignKey("PizzaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("PizzeriaData.Models.Status", "Status")
+                        .WithMany()
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("PizzeriaData.Models.Store", "StorePickup")
+                        .WithMany()
+                        .HasForeignKey("StorePickupId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
