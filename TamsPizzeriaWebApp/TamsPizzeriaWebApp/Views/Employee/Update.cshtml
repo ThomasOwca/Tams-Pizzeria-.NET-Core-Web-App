@@ -45,18 +45,21 @@
                     <td>$@Model.Total</td>
                 </tr>
                 <tr>
-                    @if (ViewBag.IsManager == "Yes")
-                    {
-                        <td>
-                            <a class="btn orderButton" asp-action="CancelOrder" asp-route-id="@Model.ConfirmationNumber" onclick="return confirm('Warning: This action will cancel the customer\'s order! Confirm?')">Cancel Order</a>
-                        </td>
-                    }
                     @if (ViewBag.IsAdmin == "Yes")
                     {
                         <td>
                             <input type="submit" class="btn orderButton" value="Delete Record" name="delete" onclick="return confirm('Warning: The record of this order will be completely destroyed in the database. Confirm?')" />
                         </td>
-
+                        <td>
+                            <a class="btn orderButton" asp-action="History">Order History</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a class="btn orderButton" asp-action="History">Order Histroy</a>
+                        </td>
+                        <td></td>
                     }
                 </tr>
             </table>
@@ -68,36 +71,67 @@
                     <td>Order Status</td>
                     <td><select asp-for="@Model.Status" asp-items="@Model.Statuses" class="form form-control"></select></td>
                 </tr>
-                <tr>
-                    <td>Pizza Size</td>
-                    <td><select asp-for="@Model.PizzaSize" asp-items="@Model.Sizes" class="form form-control"></select></td>
-                </tr>
-                <tr>
-                    <td>Pizza Crust</td>
-                    <td><select asp-for="@Model.PizzaCrust" asp-items="@Model.Crusts" class="form form-control"></select></td>
-                </tr>
-                <tr>
-                    <td>Topping 1:</td>
-                    <td><select asp-for="@Model.PizzaTopping1" asp-items="@Model.Topping1" class="form form-control"></select></td>
-                </tr>
-                <tr>
-                    <td>Topping 2:</td>
-                    <td><select asp-for="@Model.PizzaTopping2" asp-items="@Model.Topping2" class="form form-control"></select></td>
-                </tr>
-                <tr>
-                    <td>Topping 3:</td>
-                    <td><select asp-for="@Model.PizzaTopping3" asp-items="@Model.Topping3" class="form form-control"></select></td>
-                </tr>
-                <tr>
-                    <td>Quantity:</td>
-                    <td><select asp-for="@Model.PizzaQuantity" asp-items="@Model.Quantities" class="form form-control"></select></td>
-                </tr>
+                @if (Model.Status == "Order Received")
+                {
+                    <tr>
+                        <td>Pizza Size</td>
+                        <td><select asp-for="@Model.PizzaSize" asp-items="@Model.Sizes" class="form form-control"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Pizza Crust</td>
+                        <td><select asp-for="@Model.PizzaCrust" asp-items="@Model.Crusts" class="form form-control"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Topping 1:</td>
+                        <td><select asp-for="@Model.PizzaTopping1" asp-items="@Model.Topping1" class="form form-control"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Topping 2:</td>
+                        <td><select asp-for="@Model.PizzaTopping2" asp-items="@Model.Topping2" class="form form-control"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Topping 3:</td>
+                        <td><select asp-for="@Model.PizzaTopping3" asp-items="@Model.Topping3" class="form form-control"></select></td>
+                    </tr>
+                    <tr>
+                        <td>Quantity:</td>
+                        <td><select asp-for="@Model.PizzaQuantity" asp-items="@Model.Quantities" class="form form-control"></select></td>
+                    </tr>
+                }
+                else
+                {
+                    <tr hidden="hidden">
+                        <td>Pizza Size</td>
+                        <td><select asp-for="@Model.PizzaSize" asp-items="@Model.Sizes" class="form form-control"></select></td>
+                    </tr>
+                    <tr hidden="hidden">
+                        <td>Pizza Crust</td>
+                        <td><select asp-for="@Model.PizzaCrust" asp-items="@Model.Crusts" class="form form-control"></select></td>
+                    </tr>
+                    <tr hidden="hidden">
+                        <td>Topping 1:</td>
+                        <td><select asp-for="@Model.PizzaTopping1" asp-items="@Model.Topping1" class="form form-control"></select></td>
+                    </tr>
+                    <tr hidden="hidden">
+                        <td>Topping 2:</td>
+                        <td><select asp-for="@Model.PizzaTopping2" asp-items="@Model.Topping2" class="form form-control"></select></td>
+                    </tr>
+                    <tr hidden="hidden">
+                        <td>Topping 3:</td>
+                        <td><select asp-for="@Model.PizzaTopping3" asp-items="@Model.Topping3" class="form form-control"></select></td>
+                    </tr>
+                    <tr hidden="hidden">
+                        <td>Quantity:</td>
+                        <td><select asp-for="@Model.PizzaQuantity" asp-items="@Model.Quantities" class="form form-control"></select></td>
+                    </tr>
+
+                }
                 <tr>
                     <td>
                         <a class="btn orderButton" asp-action="Details" asp-route-id="@Model.ConfirmationNumber">Details View</a>
                     </td>
                     <td>
-                        <input type="submit" class="btn orderButton" value="Submit" name="update" onclick="return confirm('Warning: Order will be updated! Confirm changes?')">
+                        <input type="submit" class="btn orderButton" value="Update" name="update" onclick="return confirm('Warning: Order will be updated! Confirm changes?')">
                     </td>
                 </tr>
             </table>

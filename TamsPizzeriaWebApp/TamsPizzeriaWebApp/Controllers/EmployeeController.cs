@@ -244,6 +244,52 @@ namespace TamsPizzeriaWebApp.Controllers
                 Text = status.Type.ToString()
             });
 
+            // Convert the collection of SelectListItem objects to a List<>. 
+            var statusesList = statuses.ToList();
+
+            // When the logged in employee user is not a store manager, make regular employees unable to cancel orders.
+            if (_context.Users.FirstOrDefault(u => u.UserName == User.Identity.Name).Manager == "No")
+            {
+                // Find the status that is represents a cancelled state.
+                var status = statusesList.FirstOrDefault(s => s.Text == "Cancelled");
+
+                // Remove this cancelled status from the collection that will be assigned to the ViewModel.
+                statusesList.Remove(status);
+
+                // Re-assign the List of SelectListItem objects to the collection.
+                statuses = statusesList;
+            }
+
+            if (order.Status.Type == "Picked Up")
+            {
+                List<SelectListItem> tempList = new List<SelectListItem>();
+
+                tempList.Add(statusesList.FirstOrDefault(s => s.Text == "Picked Up"));
+
+                statusesList = tempList;
+            }
+
+            if (order.Status.Type == "In Queue")
+            {
+                var status = statusesList.FirstOrDefault(s => s.Text == "Order Received");
+                statusesList.Remove(status);
+            }
+
+            // Removes any statuses that are not 'Ready' or 'Picked Up' if the current status is set to 'Ready'.
+            if (order.Status.Type == "Ready")
+            {
+                
+                List<SelectListItem> removableStatusItems = new List<SelectListItem>(statusesList.Where(s => s.Text != "Ready" && s.Text != "Picked Up"));
+                
+                foreach (var statusItem in removableStatusItems)
+                {
+                    statusesList.Remove(statusItem);
+                }
+            }
+
+            // Re-assign the List of SelectListItem objects to the collection.
+            statuses = statusesList;
+
             var model = new OrderHistoryUpdateViewModel
             {
                 ConfirmationNumber = order.Confirmation,
@@ -274,7 +320,7 @@ namespace TamsPizzeriaWebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateOrder(OrderHistoryUpdateViewModel model, int id, string update, string delete, string cancel)
+        public IActionResult UpdateOrder(OrderHistoryUpdateViewModel model, int id, string update, string delete)
         {
             
             var order = _orderHistory.GetOrderByConfirmation(id);
