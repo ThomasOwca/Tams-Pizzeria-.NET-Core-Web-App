@@ -10,6 +10,7 @@ namespace PizzeriaData.Models
         public int Id { get; set; }
 
         public int FulFilledById { get; set; }
+        public int CustomerID { get; set; }
         public DateTime OrderDate { get; set; }
         
         [Required]

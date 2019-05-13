@@ -26,6 +26,7 @@ namespace TamsPizzeriaWebApp.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private ApplicationDbContext _context;
+        private OrderHistory _history;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -441,6 +442,13 @@ namespace TamsPizzeriaWebApp.Controllers
         [HttpGet]
         public IActionResult AccessDenied()
         {
+            return View();
+        }
+
+        public IActionResult History()
+        {
+            //var submittedOrders = _history.
+
             return View();
         }
 

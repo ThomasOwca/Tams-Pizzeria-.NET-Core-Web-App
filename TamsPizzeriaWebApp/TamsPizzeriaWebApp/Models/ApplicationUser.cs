@@ -18,5 +18,6 @@ namespace TamsPizzeriaWebApp.Models
         public int HowManyOrdersPlaced { get; set; }
         public int HowManyCustomerOrdersPlaced { get; set; }
         public int EmployeeID { get; set; }
+        public int CustomerID { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace TamsPizzeriaWebApp.Services
         IEnumerable<Order> GetAllOrdersByStatus(int id);
         IEnumerable<Order> GetAllOrdersByPizzaId(int id);
         IEnumerable<Order> GetAllOrdersByStorePickupId(int id);
+        IEnumerable<Order> GetAllOrdersByOnlineCustomerID(int id);
 
         // Two different ways to get one specific order from history.
         Order GetOrderByConfirmation(int confirmation);

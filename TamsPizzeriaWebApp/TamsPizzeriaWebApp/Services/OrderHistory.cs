@@ -96,6 +96,11 @@ namespace TamsPizzeriaWebApp.Services
                 .Where(o => o.StorePickup.Id == id);
         }
 
+        public IEnumerable<Order> GetAllOrdersByOnlineCustomerID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Order GetOrderByConfirmation(int confirmation)
         {
             return _context.Orders
