@@ -4,75 +4,71 @@
 }
 
 <h2>Employee Service System</h2>
-<div class="form-group">
-    <form asp-action="Service" method="post">
-        <div class="col-lg-12">
-            <div class="col-md-10">
-                <div class="form-group">
-                    <label asp-for="PizzaSize"></label>
-                    <select asp-for="PizzaSize" asp-items="Model.Sizes" class="form form-control" id="selectMedSize">
-                        <option value=""></option>
-                    </select>
-                    <span asp-validation-for="PizzaSize" class="white"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="PizzaCrust"></label>
-                    <select asp-for="PizzaCrust" asp-items="Model.Crusts" class="form form-control" id="selectMedSize">
-                        <option value=""></option>
-                    </select>
-                    <span asp-validation-for="PizzaCrust" class="white"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="PizzaTopping1"></label>
-                    <select asp-for="PizzaTopping1" asp-items="Model.Topping1" class="form form-control" id="selectMedSize">
-                        <option value=""></option>
-                    </select>
-                    <span asp-validation-for="PizzaTopping1" class="white"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="PizzaTopping2"></label>
-                    <select asp-for="PizzaTopping2" asp-items="Model.Topping2" class="form form-control" id="selectMedSize">
-                        <option value=""></option>
-                    </select>
-                    <span asp-validation-for="PizzaTopping2" class="white"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="PizzaTopping3"></label>
-                    <select asp-for="PizzaTopping3" asp-items="Model.Topping3" class="form form-control" id="selectMedSize">
-                        <option value=""></option>
-                    </select>
-                    <span asp-validation-for="PizzaTopping3" class="white"></span>
-                </div>
-                <label asp-for="PizzaQuantity"></label>
-                <select asp-for="PizzaQuantity" asp-items="Model.Quantities" class="form form-control" id="selectMedSize">
+<form asp-action="Service" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="PizzaSize"></label>
+                <select asp-for="PizzaSize" asp-items="Model.Sizes" class="form-control">
                     <option value=""></option>
                 </select>
-                <span asp-validation-for="PizzaQuantity" class="white"></span>
-                <div class="form-group">
-                    <br />
-                    <label asp-for="CustomerFirstName"></label>
-                    <br />
-                    <input type="text" asp-for="CustomerFirstName" class="input-lg" />
-                    <br />
-                    <span asp-validation-for="CustomerFirstName" class="white"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CustomerLastName"></label>
-                    <br />
-                    <input type="text" asp-for="CustomerLastName" class="input-lg" />
-                </div>
-                <input type="submit" value="Check Price" name="check" class="btn btn-warning" />
-                <input type="submit" value="Submit Order" name="submit" class="btn orderButton" />
-                <br />
-                <br />
-                <label class="subTotal">Sub Total: $@Model.SubTotal.ToString("0.00")</label>
-                <br />
+                <span asp-validation-for="PizzaSize" class="white"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="PizzaCrust"></label>
+                <select asp-for="PizzaCrust" asp-items="Model.Crusts" class="form-control">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="PizzaCrust" class="white"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PizzaTopping1"></label>
+                <select asp-for="PizzaTopping1" asp-items="Model.Topping1" class="form-control">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="PizzaTopping1" class="white"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PizzaTopping2"></label>
+                <select asp-for="PizzaTopping2" asp-items="Model.Topping2" class="form-control">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="PizzaTopping2" class="white"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PizzaTopping3"></label>
+                <select asp-for="PizzaTopping3" asp-items="Model.Topping3" class="form-control">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="PizzaTopping3" class="white"></span>
+            </div>
+            <label asp-for="PizzaQuantity"></label>
+            <select asp-for="PizzaQuantity" asp-items="Model.Quantities" class="form-control">
+                <option value=""></option>
+            </select>
+            <span asp-validation-for="PizzaQuantity" class="white"></span>
+            <div class="form-group">
+                <br />
+                <label asp-for="CustomerFirstName"></label>
+                <br />
+                <input type="text" asp-for="CustomerFirstName" class="input-lg" />
+                <br />
+                <span asp-validation-for="CustomerFirstName" class="white"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerLastName"></label>
+                <br />
+                <input type="text" asp-for="CustomerLastName" class="input-lg" />
+            </div>
+            <input type="submit" value="Check Price" name="check" class="btn btn-warning" />
+            <input type="submit" value="Submit Order" name="submit" class="btn orderButton" />
+            <br />
+            <br />
+            <label class="subTotal">Sub Total: $@Model.SubTotal.ToString("0.00")</label>
+            <br />
         </div>
-    </form>
-    <label></label>
-    <br />
-</div>
+    </div>
+</form>
 
 
 

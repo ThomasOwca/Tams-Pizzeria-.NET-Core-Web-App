@@ -9,48 +9,47 @@
 <h3>Please Submit Your Custom Online Order Below!</h3>
 <br />
 <h4>Order Form</h4>
-<div class="form-group">
     <form asp-action="Order" method="post">
-        <div class="col-lg-12">
-            <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label asp-for="PizzaSize"></label>
-                    <select asp-for="PizzaSize" asp-items="Model.Sizes" class="form form-control" id="selectMedSize">
+                    <select asp-for="PizzaSize" asp-items="Model.Sizes" class="form-control">
                         <option value=""></option>
                     </select>
                     <span asp-validation-for="PizzaSize" class="white"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="PizzaCrust"></label>
-                    <select asp-for="PizzaCrust" asp-items="Model.Crusts" class="form form-control" id="selectMedSize">
+                    <select asp-for="PizzaCrust" asp-items="Model.Crusts" class="form-control">
                         <option value=""></option>
                     </select>
                     <span asp-validation-for="PizzaCrust" class="white"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="PizzaTopping1"></label>
-                    <select asp-for="PizzaTopping1" asp-items="Model.Topping1" class="form form-control" id="selectMedSize">
+                    <select asp-for="PizzaTopping1" asp-items="Model.Topping1" class="form-control">
                         <option value=""></option>
                     </select>
                     <span asp-validation-for="PizzaTopping1" class="white"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="PizzaTopping2"></label>
-                    <select asp-for="PizzaTopping2" asp-items="Model.Topping2" class="form form-control" id="selectMedSize">
+                    <select asp-for="PizzaTopping2" asp-items="Model.Topping2" class="form-control">
                         <option value=""></option>
                     </select>
                     <span asp-validation-for="PizzaTopping2" class="white"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="PizzaTopping3"></label>
-                    <select asp-for="PizzaTopping3" asp-items="Model.Topping3" class="form form-control" id="selectMedSize">
+                    <select asp-for="PizzaTopping3" asp-items="Model.Topping3" class="form form-control">
                         <option value=""></option>
                     </select>
                     <span asp-validation-for="PizzaTopping3" class="white"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="PizzaQuantity"></label>
-                    <select asp-for="PizzaQuantity" asp-items="Model.Quantities" class="form form-control" id="selectMedSize">
+                    <select asp-for="PizzaQuantity" asp-items="Model.Quantities" class="form form-control">
                         <option value=""></option>
                     </select>
                     <span asp-validation-for="PizzaQuantity" class="white"></span>
@@ -66,8 +65,6 @@
             </div>
         </div>
     </form>
-    
-</div>
 <label></label>
 
 
