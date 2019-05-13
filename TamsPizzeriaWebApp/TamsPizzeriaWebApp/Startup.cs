@@ -66,6 +66,7 @@ namespace TamsPizzeriaWebApp
             services.AddScoped<IPizzeriaMenu, PizzeriaMenu>();
             services.AddScoped<IOrder, Ordering>();
             services.AddScoped<IOrderHistory, OrderHistory>();
+            services.AddScoped<ICustomer, Customer>();
 
             //// Add the following line of code for creating DI for UserClaims.
             //services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, MyUserClaimsPrincipalFactory>();

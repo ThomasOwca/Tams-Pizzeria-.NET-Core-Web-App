@@ -11,7 +11,7 @@
     {
         <li class=""><a asp-controller="Employee" asp-action="Index">Employee Portal</a></li>
     }
-    <li class=""><a asp-controller="Account" asp-action="History">Online Order History</a></li>
+    <li class=""><a asp-controller="Customer" asp-action="History">Online Order History</a></li>
     <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">Profile</a></li>
     <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)"><a asp-action="ChangePassword">Password</a></li>
     @if (hasExternalLogins)

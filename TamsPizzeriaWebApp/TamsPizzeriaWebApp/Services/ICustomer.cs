@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TamsPizzeriaWebApp.Services
 {
-    interface ICustomer
+    public interface ICustomer
     {
         int GetCurrentOnlineCustomerID(ClaimsPrincipal currentUser);
     }
