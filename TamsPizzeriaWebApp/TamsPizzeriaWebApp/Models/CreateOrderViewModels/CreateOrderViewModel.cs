@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace TamsPizzeriaWebApp.Models.CreateOrderViewModels
 {
     public class CreateOrderViewModel
-    { 
+    {
         public IEnumerable<SelectListItem> Sizes { get; set; }
 
         public IEnumerable<SelectListItem> Crusts { get; set; }
@@ -55,5 +55,6 @@ namespace TamsPizzeriaWebApp.Models.CreateOrderViewModels
 
         public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
+        public int CustomerID { get; set; }
     }
 }

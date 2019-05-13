@@ -21,11 +21,13 @@ namespace TamsPizzeriaWebApp.Controllers
     {
         private IPizzeriaMenu _pizzeriaMenu;
         private IOrder _order;
+        private ICustomer _customer;
 
-        public CreateOrderController(IPizzeriaMenu pizzeriaMenu, IOrder order)
+        public CreateOrderController(IPizzeriaMenu pizzeriaMenu, IOrder order, ICustomer customer)
         {
             _pizzeriaMenu = pizzeriaMenu;
             _order = order;
+            _customer = customer;
         }
 
 
@@ -133,6 +135,9 @@ namespace TamsPizzeriaWebApp.Controllers
             model.Quantities = quantityItems;
             model.ConfirmationNumber = generateConfirmationNumber;
 
+            // Remove later
+            var customer = _customer.GetCurrentOnlineCustomerID(User);
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -176,7 +181,7 @@ namespace TamsPizzeriaWebApp.Controllers
                         PizzaTopping2 = order.Pizza.Topping2,
                         PizzaTopping3 = order.Pizza.Topping3,
                         UserFirstName = order.FirstName,
-                        UserLastName = order.LastName,
+                        UserLastName = order.LastName
                     };
                 }
                 catch (Exception ex2)
@@ -208,6 +213,8 @@ namespace TamsPizzeriaWebApp.Controllers
                 Total = _order.CalculateOrderCost(pizza),
                 ConfirmationNumber = id
             };
+
+            submittedOrder.CustomerID = _customer.GetCurrentOnlineCustomerID(User);
 
             if (_order.GetOrderByConfirmation(id) == null)
                 _order.SubmitOnlineOrder(submittedOrder, pizza, "Order Received", 1);

@@ -22,5 +22,6 @@ namespace TamsPizzeriaWebApp.Models.CreateOrderViewModels
         public string DateSubmitted { get; set; }
         public string EstimatedReady { get; set; }
         public int ConfirmationNumber { get; set; }
+        public int CustomerID { get; set; }
     }
 }

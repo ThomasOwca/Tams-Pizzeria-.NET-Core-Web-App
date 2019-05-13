@@ -9,5 +9,6 @@ namespace TamsPizzeriaWebApp.Services
     public interface ICustomer
     {
         int GetCurrentOnlineCustomerID(ClaimsPrincipal currentUser);
+        int CreateNewRegistrationCustomerID();
     }
 }

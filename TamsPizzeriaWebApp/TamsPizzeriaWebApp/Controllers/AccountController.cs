@@ -26,18 +26,20 @@ namespace TamsPizzeriaWebApp.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         private ApplicationDbContext _context;
+        private ICustomer _customer;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger, [FromServices] ApplicationDbContext context)
+            ILogger<AccountController> logger, [FromServices] ApplicationDbContext context, ICustomer customer)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
             _context = context;
+            _customer = customer;
         }
 
         [TempData]
@@ -226,8 +228,9 @@ namespace TamsPizzeriaWebApp.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+                var id = _customer.CreateNewRegistrationCustomerID();
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, Admin = model.Admin,
-                Employee = model.Employee, Manager = model.Manager};
+                Employee = model.Employee, Manager = model.Manager, CustomerID = id };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

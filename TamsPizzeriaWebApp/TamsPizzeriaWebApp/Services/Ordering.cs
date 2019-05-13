@@ -87,10 +87,10 @@ namespace TamsPizzeriaWebApp.Services
                 Pizza = pizza,
                 Status = GetStatus(status),
                 StorePickup = GetStorePickup(store),
-                Total = total
+                Total = total,
+                CustomerID = model.CustomerID
             };
 
-            // TO-DO (In-development do not uncomment the lines below until above lines are completed).
             _context.Add(order);
             _context.SaveChanges();
         }

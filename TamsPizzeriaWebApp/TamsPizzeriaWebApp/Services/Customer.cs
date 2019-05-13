@@ -16,9 +16,14 @@ namespace TamsPizzeriaWebApp.Services
             _context = context;
         }
 
+        public int CreateNewRegistrationCustomerID()
+        {
+            return _context.Users.Max(user => user.CustomerID) + 1; 
+        }
+
         public int GetCurrentOnlineCustomerID(ClaimsPrincipal currentUser)
         {
-            return _context.Users.FirstOrDefault(user => user.UserName == currentUser.Identity.Name).EmployeeID;
+            return _context.Users.FirstOrDefault(user => user.UserName == currentUser.Identity.Name).CustomerID;
         }
     }
 }
