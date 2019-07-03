@@ -18,18 +18,6 @@ Thomas Owca
 
 <img src="Demo Images/image1.PNG" alt="img1" width="1000" />
 
-<img src="Demo Images/image2.PNG" alt="img2" width="1000" />
-
-<img src="Demo Images/image3.PNG" alt="img3" width="1000" />
-
-<img src="Demo Images/image4.PNG" alt="img4" width="1000" />
-
-<img src="Demo Images/image4.PNG" alt="img4" width="1000" />
-
-<img src="Demo Images/image5.PNG" alt="img5" width="1000" />
-
-<img src="Demo Images/image6.PNG" alt="img6" width="1000" />
-
 <img src="Demo Images/image12.PNG" alt="img6" width="1000" />
 
 <img src="Demo Images/image13.PNG" alt="img6" width="1000" />
